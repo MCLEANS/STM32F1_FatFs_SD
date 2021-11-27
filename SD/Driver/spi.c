@@ -43,16 +43,18 @@ void initSpi(void)
 	
 	/* Set CS pin to General Purpose Output */
 	GPIOB->CRH |= GPIO_CRH_MODE12;
+	/* Set CS pin to High */
+	GPIOB->ODR |= GPIO_ODR_ODR12;
 
 
 	/* SPI Configuration */
 	SPI2->CR1  &= ~SPI_CR1_SPE; //Disable SPI
 	SPI2->CR1 &= ~ SPI_CR1_BR;
-	SPI2->CR1 |=  SPI_CR1_BR_1 | SPI_CR1_BIDIOE ;
-	SPI2->CR1 &= ~SPI_CR1_CPHA;
-	SPI2->CR1 |= SPI_CR1_CPOL;
-	SPI2->CR1 &= ~SPI_CR1_DFF;
-	SPI2->CR1 |= SPI_CR1_LSBFIRST;
+	SPI2->CR1 |=  SPI_CR1_BR_0 | SPI_CR1_BIDIOE ;
+	SPI2->CR1 |= SPI_CR1_CPHA; //CPHA 1 EDGE
+	SPI2->CR1 &= ~SPI_CR1_CPOL; //CPOL LOW
+	SPI2->CR1 &= ~SPI_CR1_DFF; //8-bit data frame
+	SPI2->CR1 &= ~SPI_CR1_LSBFIRST; //MSB_FIRST
 	SPI2->CR1  |= SPI_CR1_SSM | SPI_CR1_SSI; 
 	SPI2->CR1 |= SPI_CR1_MSTR;
 	SPI2->CR1  |= SPI_CR1_SPE;  // enable SPI

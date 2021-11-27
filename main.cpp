@@ -15,14 +15,15 @@ int main(void)
     char data[] = "Hello \r\n";
     char file_name[] = "test.txt";
     FIL fil;
-	FRESULT fr;
+	volatile FRESULT fr;
 	debug.println("Initializing");
-	 
-	//_mountSdcard();
-	 /*
-	_openfile(file_name , WRITE_FILE , &fil);
 
-	fr = f_lseek(&fil , f_size(&fil));
+ 
+	_mountSdcard();
+
+	_openfile(file_name , WRITE_FILE , &fil);
+/*
+	fr = f_lseek(fil , f_size(fil));
 	char val[3];
 	itoa(fr,val,10);
 	debug.print("CODE : ");
@@ -39,17 +40,16 @@ int main(void)
 		debug.println("OK");
 	}
 
-	_writeString(data , &fil);
+	_writeString(data , fil);
 
-	_closefile(&fil);
+	_closefile(fil);
 	_unmountSdcard();
-	*/
-
-	SpiCsLow();
-	SpiSendData('U');
-	SpiCsHigh();
+	
+*/
+	
 
 	while(1){
-
+		
+			
 	}
 }

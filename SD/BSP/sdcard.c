@@ -38,7 +38,6 @@ void insertBuffer(char *data)
 
 void InitSdcard(void)
 {
-		initGpio();
 		initSpi();
 		MX_FATFS_Init();
 }
@@ -50,7 +49,7 @@ void _mountSdcard(void)
 			return;
 	else
 	{
-			if(f_mount(&fatfs , "" , 0) != FR_OK)
+			if(f_mount(&fatfs , "" , 1) != FR_OK)
 			{
 				sdcardErrorHandle(SDCARD_ERROR_MOUNT , "Failed to mount sdcard");
 				state_mount = SDCARD_NOT_MOUNTED;

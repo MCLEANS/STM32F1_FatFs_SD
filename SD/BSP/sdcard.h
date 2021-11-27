@@ -22,6 +22,7 @@
 #include "spi.h"
 #include "gpio.h"
 
+
 #define SDCARD_ERROR_OPEN_NORMAL	 		0x1
 #define SDCARD_ERROR_OPEN_WRITE_MODE	0x2
 #define SDCARD_ERROR_OPEN_READ_MODE	 	0x3

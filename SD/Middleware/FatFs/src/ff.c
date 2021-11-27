@@ -146,7 +146,7 @@
 #define	ENTER_FF(fs)		{ if (!lock_fs(fs)) return FR_TIMEOUT; }
 #define	LEAVE_FF(fs, res)	{ unlock_fs(fs, res); return res; }
 #else
-#define	ENTER_FF(fs)
+#define	ENTER_FF(fs) 
 #define LEAVE_FF(fs, res)	return res
 #endif
 

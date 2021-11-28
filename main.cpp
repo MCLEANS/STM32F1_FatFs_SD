@@ -22,8 +22,8 @@ int main(void)
 	_mountSdcard();
 
 	_openfile(file_name , WRITE_FILE , &fil);
-/*
-	fr = f_lseek(fil , f_size(fil));
+
+	fr = f_lseek(&fil , f_size(&fil));
 	char val[3];
 	itoa(fr,val,10);
 	debug.print("CODE : ");
@@ -40,16 +40,16 @@ int main(void)
 		debug.println("OK");
 	}
 
-	_writeString(data , fil);
+	_writeString(data , &fil);
 
-	_closefile(fil);
+	_closefile(&fil);
 	_unmountSdcard();
 	
-*/
+
 	
 
 	while(1){
-		
-			
+			SpiCsLow();
+			SpiSendData('U');
 	}
 }
